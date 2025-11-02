@@ -3,13 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" >
-
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
         <title>Apses Spēks</title>
     </head>
     <body class="antialiased">
-        <img id="banner">
-        <div id="navigation">
+        <div id="bannerdiv">
+        </div>
+        <div class="full"id="navigation">
+            <div id="alignment"></div>
             <a>Sākumlapa</a>
             <a>Galerija</a>
             <a>Objekti</a>
