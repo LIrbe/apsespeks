@@ -7,14 +7,13 @@
         <title>Apses Spēks</title>
     </head>
     <body class="antialiased">
-        <div id="bannerdiv">
-        </div>
+        <div id="bannerdiv">wat</div>
         <div class="full"id="navigation">
-            <div id="alignment"></div>
-            <a>Sākumlapa</a>
+            <a href="/">Sākumlapa</a>
             <a>Galerija</a>
             <a>Objekti</a>
             <a>Karte</a>
+            <a href="/raksti">Vērtības</a>
             <a>Rezervācijas</a>
             <a>Kontakti</a>
         </div>

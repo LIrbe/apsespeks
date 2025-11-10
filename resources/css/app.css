@@ -1,5 +1,10 @@
+:root{
+    --primbgcol:red;
+    --primelemcol:green;
+}
+
 body{
-    background-color: red;
+    background-color: var(--primbgcol);
 }
 .full {
     width: 100%;
@@ -7,11 +12,8 @@ body{
 #navigation {
     height: 50px;
     /*background-color: red;*/
-    color: green;
+    color: var(--primelemcol);
     font-family: 'Courier New', Courier, monospace;
-    align-items: center;
-    text-align: center;
-    display: flex;
 }
 
 #navigation a{
@@ -19,28 +21,55 @@ body{
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     width: 9%;
-    display: inline-block;
     font-size:x-large;
 }
 
 #navigation a:hover{
-    background-color: green;
-    color: red;
-}
-
-#alignment{
-    height: auto;
-    width: 23%;
-    display: inline-block;
+    background-color: var(--primelemcol);
+    color: var(--primbgcol);
 }
 
 #bannerdiv{
-    width: 100%;
-    max-height: 10%;
-}
-
-#bannerdiv img{
+    width: 100vw;
+    max-height: 10vw;
+    height: 5vw;
     background-image: url('storage/banner.jpg');
     width: 100%;
     height: auto;
+    display: block;
+}
+
+.createbutton{
+    background-color: green;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.createbutton:hover{
+    background-color: lightgreen;
+}
+
+.topmidbuttons{
+    width: 100%;
+    height: 100px;
+    /*display: flex;*/
+}
+
+.topmidbuttons button{
+    width: 20%;
+    height: 100%;
+    display: flex-block;
+    background-color: var(--primbgcol);
+    font-size: x-large;
+    color: var(--primelemcol);
+}
+
+.topmidbuttons button:hover{
+    background-color: var(--primelemcol);
+    color: var(--primbgcol);
+}
+
+#blog-head{
+    text-align: center;
 }
