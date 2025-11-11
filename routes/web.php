@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,10 @@ Route::get('/', function () {
 Route::get('/raksti', function () {
     return view('blog');
 });
+
+Route::get('/vesture', function () {
+    return view('history');
+});
+
+Route::get('/raksti/create', [BlogController::class, 'create']);
+Route::post('/raksti', [BlogController::class, 'store']);

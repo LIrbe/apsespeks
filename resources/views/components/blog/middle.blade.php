@@ -1,7 +1,7 @@
 <x-base>
     <div class="topmidbuttons">
-        <button><strong>Raksti</strong></button>
-        <button><strong>Vēsture</strong></button>
+        <a href="/raksti"><strong>Raksti</strong></a>
+        <a href="/vesture"><strong>Vēsture</strong></a>
     </div>
     {{ $slot }}
 </x-base>
