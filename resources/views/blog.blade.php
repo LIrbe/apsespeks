@@ -5,6 +5,6 @@
         </h1>
     </div>
     <div>
-        <button onclick="" class="createbutton">Izveidot jaunu rakstu</button>
+        <a href="/raksti/jauns" class="createbutton">Izveidot jaunu rakstu</a>
     </div>
 </x-blog.middle>

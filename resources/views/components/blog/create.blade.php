@@ -9,6 +9,18 @@
             </ul>
         </div>
     @endif
+    {{Form::open(array('url' => '', 'files' => true, 'route' => ''));}}
+    {{Form::label('title', 'Nosaukums');}}
+    {{Form::text('title');}}
+    {{Form::text('content');}}
+    {{Form::label('date', 'Palaišanas datums');}}
+    {{Form::datetime('date');}}
+    {{Form::label('pictures');}}
+    {{Form::file('pictures');}}
+    {{Form::submit('Saglabāt');}}
+    {{Form::submit('Atcelt');}}
+    {{Form::csrf_token();}}
+    {{Form::close();}}
     <form method="POST">
         <label for="title">Nosaukums</label>
         <input type="text" id="raksta-nosaukums" name="title" value="{{old('title')}}">

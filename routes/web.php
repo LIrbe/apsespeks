@@ -28,3 +28,7 @@ Route::get('/vesture', function () {
 
 Route::get('/raksti/create', [BlogController::class, 'create']);
 Route::post('/raksti', [BlogController::class, 'store']);
+
+Route::get('/raksti/jauns', function() {
+    return view('blog/create');
+});
