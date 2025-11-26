@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
 use App\Models\raksts;
+#use function PHPUnit\Framework\returnArgument;
+use Illuminate\Support\Facades\Route;
 
 class BlogController extends Controller
 {
@@ -13,7 +15,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $raksti = raksts::all();
+        return view("blog.index", compact("raksti"));
     }
 
     /**
@@ -21,7 +24,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view("blog.create");
     }
 
     /**
@@ -30,6 +33,7 @@ class BlogController extends Controller
     public function store(StorePostRequest $request)
     {
         raksts::create($request->validated());
+        return redirect()->route("blog.show", $request->id)->with("success","Jauns raksts izveidots!");
     }
 
     /**
@@ -37,7 +41,8 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $raksts = raksts::find($id);
+        return view("blog.show", compact("raksts"));
     }
 
     /**
@@ -45,7 +50,8 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $raksti = raksts::find($id);
+        return view("", compact(""));
     }
 
     /**
@@ -53,7 +59,9 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $raksts = raksts::find($id);
+        $raksts->update($request->validated());
+        return redirect()->route("blog.show")->with("success","Raksts atjaunots!");
     }
 
     /**
@@ -61,6 +69,8 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $raksts = raksts::find($id);
+        $raksts->delete();
+        return redirect()->route("blog.index")->with("success","Raksts dzēsts!");
     }
 }

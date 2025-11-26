@@ -12,7 +12,7 @@ class StorePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|string',
             'content' => 'required|string',
-            'date' => ['required', Rule::date()->todayOrAfter(),],
+            'date' => ['required', 'date', 'after:' . now()],
             'pictures' => 'extensions:jpg,png,jpeg,tiff|mimes:jpg,png,jpeg,tiff|file|nullable',
         ];
 

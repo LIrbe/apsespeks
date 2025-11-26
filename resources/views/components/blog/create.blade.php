@@ -32,4 +32,17 @@
        <button type="button" onclick="">Saglabāt</button>
         <button type="button" onclick="">Atcelt</button>
     </form>
+    {{html()->form('/post',)->open()}}
+    {{html()->label('Nosaukums', 'title')}}
+    {{html()->text('title')}}
+    {{html()->textarea('content')}}
+    {{html()->label('Palaišanas datums', 'date')}}
+    {{html()->datetime('date')}}
+    {{html()->label('Piespraust?', 'pin')}}
+    {{html()->checkbox('pin')}}
+    {{html()->label('Attēli', 'pictures')}}
+    {{html()->file('pictures')}}
+    {{html()->button('Saglabāt')}}
+    {{html()->button('Atcelt')}}
+    {{html()->form()->close()}}
 </div>

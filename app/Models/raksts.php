@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class raksts extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        "title",
+        "content",
+        "date",
+        "pictures",
+    ];
 }

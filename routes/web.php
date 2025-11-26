@@ -18,17 +18,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/raksti', function () {
-    return view('blog');
-});
+Route::get('/raksti', [BlogController::class,'index'])->name('blog.index');
+
+Route::get('/raksti/jauns', [BlogController::class, 'create'])->name('blog.create');
+
+Route::post('/raksti', [BlogController::class, 'store'])->name('blog.store');
+
+Route::get('/raksti/{raksts}', [BlogController::class,'show'])->name('blog.show');
+
+Route::get('/raksti/{raksts}/edit', [BlogController::class,'edit'])->name('blog.edit');
+
+Route::put('/raksti/{raksts}', [BlogController::class,'update'])->name('blog.update');
+
+Route::delete('/raksts/{raksts}', [BlogController::class,'delete'])->name('blog.delete');
 
 Route::get('/vesture', function () {
     return view('history');
-});
-
-Route::get('/raksti/create', [BlogController::class, 'create']);
-Route::post('/raksti', [BlogController::class, 'store']);
-
-Route::get('/raksti/jauns', function() {
-    return view('blog/create');
 });

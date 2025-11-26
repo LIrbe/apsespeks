@@ -16,7 +16,7 @@
                 <a class="leftnav" href="#">Galerija</a>
                 <a class="leftnav" href="#">Objekti</a>
                 <a class="leftnav" href="#">Karte</a>
-                <a class="leftnav" href="/raksti">Vērtības</a>
+                <a class="leftnav" href={{route('blog.index')}}>Vērtības</a>
                 <a class="leftnav" href="#">Rezervācijas</a>
                 <a>Kontakti</a>
             </nav>
