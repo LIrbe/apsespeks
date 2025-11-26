@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\StorePostRequest;
+use App\Models\raksts;
 
 class BlogController extends Controller
 {
@@ -26,14 +27,9 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string',
-            'content' => 'required|string',
-            'date' => ['required', Rule::date()->todayOrAfter(),],
-            'pictures' => 'extensions:jpg,png,jpeg,tiff|mimes:jpg,png,jpeg,tiff|file|nullable',
-        ]);
+        raksts::create($request->validated());
     }
 
     /**

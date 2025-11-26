@@ -11,6 +11,7 @@
         <div id="topsection">
             <div id="bannerdiv"><img src="{{asset('storage/images/logo.png')}}" alt="logo" id="logo"></div>
             <nav id="navigation">
+                <div id="navspacer"></div>
                 <a class="leftnav" href="/">Sākumlapa</a>
                 <a class="leftnav" href="#">Galerija</a>
                 <a class="leftnav" href="#">Objekti</a>
@@ -20,7 +21,7 @@
                 <a>Kontakti</a>
             </nav>
         </div>
-        <div id="nav-spacer"></div>
+        <div id="topspacer"></div>
         {{ $slot }}
     </body>
 </html>

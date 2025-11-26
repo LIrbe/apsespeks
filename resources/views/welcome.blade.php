@@ -1,6 +1,6 @@
 <x-base>
-        <div class="container">
-            <div class="blog-container">
+        <div class="welcome-container">
+            <div class="welcome-blog-container">
                 <div class="blog-article">
                     <div class="article-body">
                         <h1>Pirmais raksts</h1>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="wide-blog-container">
+            <div class="wide-welcome-blog-container">
                 <div class="blog-article wide-article">
                     <div class="article-body">
                         <h1>Ceturtais raksts</h1>

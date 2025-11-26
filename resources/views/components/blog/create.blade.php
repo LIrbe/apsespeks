@@ -1,5 +1,5 @@
 <div>
-    <h1>Jauns raksts</h1>
+    <h1>NETIEK IZMANTOTS</h1>
     @if ($errors->any())
         <div class="errors">
             <ul>
