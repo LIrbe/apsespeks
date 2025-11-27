@@ -1,6 +1,10 @@
-<x-blog.middle>
+<x-base>
+    <div class="topmidbuttons">
+        <a href={{route("blog.index")}} class="patreizejs">Raksti</a>
+        <a href={{ route("history") }}>Vēsture</a>
+    </div>
     <div>
-        <div class="blog-head">
+        <div class="page-head">
             <h1>
                 Jaunākie raksti
             </h1>
@@ -26,4 +30,4 @@
             </div>
         </div>
     </div>
-</x-blog.middle>
+</x-base>

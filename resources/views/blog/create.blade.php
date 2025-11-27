@@ -1,5 +1,5 @@
 <x-blog.middle>
-    <div class="blog-head">
+    <div class="page-head">
         <h1>Jauns raksts</h1>
     </div>
     @if ($errors->any())

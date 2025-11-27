@@ -1,3 +1,10 @@
-<x-blog.middle>
-    <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
-</x-blog.middle>
+<x-base>
+    <div class="topmidbuttons">
+        <a href={{route("blog.index")}}>Raksti</a>
+        <a href={{ route("history") }} class="patreizejs">Vēsture</a>
+    </div>
+    <div>
+        <h1>Vēsture</h1>
+        <p>Viskas notika.</p>
+    </div>
+</x-base>

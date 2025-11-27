@@ -170,11 +170,11 @@ body{
 
 /*Blogs*/
 
-.blog-head{
+.page-head{
     text-align: center;
 }
 
-.blog-head h1{
+.page-head h1{
     margin-top: 0.5vh;
 }
 
@@ -204,3 +204,9 @@ body{
 /*.full-width{
     width: 100%;
 }*/
+/* Objekti */
+
+.objects-container{
+    display: flex;
+    align-items: center;
+}

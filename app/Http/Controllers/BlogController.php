@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
-use App\Models\raksts;
+use App\Models\Raksts;
 #use function PHPUnit\Framework\returnArgument;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $raksti = raksts::all();
+        $raksti = Raksts::all();
         return view("blog.index", compact("raksti"));
     }
 
@@ -32,7 +32,7 @@ class BlogController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        raksts::create($request->validated());
+        Raksts::create($request->validated());
         return redirect()->route("blog.show", $request->id)->with("success","Jauns raksts izveidots!");
     }
 
@@ -41,8 +41,8 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        $raksts = raksts::find($id);
-        return view("blog.show", compact("raksts"));
+        $raksts = Raksts::find($id);
+        return redirect()->route("blog.show", $raksts->id);
     }
 
     /**
@@ -50,18 +50,18 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        $raksti = raksts::find($id);
-        return view("", compact(""));
+        $raksts = Raksts::find($id);
+        return redirect()->route("blog.edit", $raksts->id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StorePostRequest $request, string $id)
     {
-        $raksts = raksts::find($id);
+        $raksts = Raksts::find($id);
         $raksts->update($request->validated());
-        return redirect()->route("blog.show")->with("success","Raksts atjaunots!");
+        return redirect()->route("blog.show", $request->id)->with("success","Raksts atjaunots!");
     }
 
     /**
@@ -69,7 +69,7 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        $raksts = raksts::find($id);
+        $raksts = Raksts::find($id);
         $raksts->delete();
         return redirect()->route("blog.index")->with("success","Raksts dzēsts!");
     }

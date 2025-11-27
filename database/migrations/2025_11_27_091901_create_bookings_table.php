@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('raksts', function (Blueprint $table) {
-            $table->id()->autoIncrement();
+        Schema::create('bookings', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
-            $table->text('title'); /* varbūt pārveidot uz tinytext */
-            $table->mediumText('content');
-            $table->date('date');
-            $table->boolean('pin')->default(false);
-            $table->text('files')->nullable();
         });
     }
 
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('raksts');
+        Schema::dropIfExists('bookings');
     }
 };
