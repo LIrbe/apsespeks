@@ -4,16 +4,40 @@
     </div>
     <div>
         <div id="objects-container">
-            <div>
-                <menu>
-                    <li>Objekts 1</li>
-                    <li>Objekts 2</li>
-                    <li>Objekts 3</li>
-                </menu>
+            <div id="objects-list">
+                <table>
+                    <thead>
+                        <th>Nosaukums</th>
+                        <th>Laiks</th>
+                        <th>Atrašanās vieta</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>$objekts->nosaukums</td>
+                            <td>$objekts->finish_date</td>
+                            <td><a href="#">Vieta</a></td>
+                        </tr>
+                        <tr>
+                            <td>$objekts2->nosaukums</td>
+                            <td>$objekts2->finish_date</td>
+                            <td><a href="#">Vieta2</a></td>
+                        </tr>
+                        <tr>
+                            <td>$objekts3->nosaukums</td>
+                            <td>$objekts3->finish_date</td>
+                            <td><a href="#">Vieta3</a></td>
+                        </tr>
+                        <tr>
+                            <td>$objekts4->nosaukums</td>
+                            <td>$objekts4->finish_date</td>
+                            <td><a href="#">Vieta4</a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div>
+            <div id="map">
                 <!--<gmp-map></gmp-map>-->
-                <div style="color:gray;background-color:gray;width:500px;height:500px">placeholder</div>
+                <div style="color:black;background-color:gray;height:65vh;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1">karte</div>
             </div>
         </div>
         @if ($objekts != NULL)

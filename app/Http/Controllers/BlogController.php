@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Models\Raksts;
 #use function PHPUnit\Framework\returnArgument;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\Compilers\Concerns\CompilesClasses;
 
 class BlogController extends Controller
 {
@@ -32,8 +33,8 @@ class BlogController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        Raksts::create($request->validated());
-        return redirect()->route("blog.show", $request->id)->with("success","Jauns raksts izveidots!");
+        $raksts = Raksts::create($request->validated());
+        return redirect()->route("blog.show", compact("raksts"))->with("success","Jauns raksts izveidots!");
     }
 
     /**
@@ -42,7 +43,7 @@ class BlogController extends Controller
     public function show(string $id)
     {
         $raksts = Raksts::find($id);
-        return redirect()->route("blog.show", $raksts->id);
+        return view("blog.show", compact("raksts"));
     }
 
     /**
@@ -51,15 +52,15 @@ class BlogController extends Controller
     public function edit(string $id)
     {
         $raksts = Raksts::find($id);
-        return redirect()->route("blog.edit", $raksts->id);
+        return view("blog.edit", compact("raksts"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(StorePostRequest $request, string $id)
+    public function update(StorePostRequest $request)
     {
-        $raksts = Raksts::find($id);
+        $raksts = Raksts::find($request->id);
         $raksts->update($request->validated());
         return redirect()->route("blog.show", $request->id)->with("success","Raksts atjaunots!");
     }

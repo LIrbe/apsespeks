@@ -1,3 +1,4 @@
+<!--Neizmanto-->
 <x-base>
     <div class="topmidbuttons">
         <a href={{route("blog.index")}}>Raksti</a>

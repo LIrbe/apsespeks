@@ -13,6 +13,7 @@ export default defineConfig({
         alias: {
             "@": "/resources",
             "@img": "/resources/images",
+            "@fonts": "/resources/fonts",
         },
     },
 });

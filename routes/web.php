@@ -20,6 +20,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/* Misc */
+
+Route::get('/kontakti', function () {
+    return view('contacts');
+});
+
+Route::get('/piedāvājumi', function () {
+    return view('shop');
+})->name('shop');
+
+Route::get('/projekts', function () {
+    return view('euproj');
+})->name('project');
+
+
 /*Vērtības*/
 
 Route::get('/raksti', [BlogController::class,'index'])->name('blog.index');
@@ -32,13 +47,14 @@ Route::get('/raksti/{raksts}', [BlogController::class,'show'])->name('blog.show'
 
 Route::get('/raksti/{raksts}/edit', [BlogController::class,'edit'])->name('blog.edit');
 
-Route::put('/raksti/{raksts}', [BlogController::class,'update'])->name('blog.update');
+Route::put('/raksti', [BlogController::class,'update'])->name('blog.update');
 
-Route::delete('/raksts/{raksts}', [BlogController::class,'delete'])->name('blog.delete');
+Route::delete('/raksts/{raksts}', [BlogController::class,'destroy'])->name('blog.delete');
 
-Route::get('/vesture', function () {
+/*Route::get('/vesture', function () {
     return view('history');
 })->name('history');
+*/
 
 /* Objekti */
 
@@ -64,10 +80,4 @@ Route::get('/galerija', [ImageController::class,'index'])->name('gallery.index')
 
 Route::get('/rezervacijas', function() {
     return view('bookings.main');
-});
-
-/* Pārējais */
-
-Route::get('/kontakti', function () {
-    return view('contacts');
 });

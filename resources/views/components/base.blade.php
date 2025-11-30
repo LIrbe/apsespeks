@@ -13,11 +13,12 @@
             <nav id="navigation">
                 <div id="navspacer"></div>
                 <a class="leftnav" href="/">Sākumlapa</a>
+                <a class="leftnav" href={{route('shop')}}>Darbības virzieni</a>
                 <a class="leftnav" href="{{route('gallery.index')}}">Galerija</a>
                 <a class="leftnav" href={{route('objekti.index')}}>Objekti</a>
                 <!--<a class="leftnav" href="#">Karte</a>-->
-                <a class="leftnav" href={{route('blog.index')}}>Vērtības</a>
-                <a class="leftnav" href="/rezervacijas">Rezervācijas</a>
+                <a class="leftnav" href={{route('blog.index')}}>Blogs</a>
+                <!--<a class="leftnav" href="/rezervacijas">Rezervācijas</a>-->
                 <a href="/kontakti">Kontakti</a>
             </nav>
         </div>

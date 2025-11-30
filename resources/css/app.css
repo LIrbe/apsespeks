@@ -1,16 +1,21 @@
 :root{
     /*change colors*/
-    --primbgcol:rgb(255, 0, 0);
-    --secbgcol:rgb(255, 74, 74);
-    --primelemcol:rgb(0, 128, 0);
-    --tablecol:rgb(0, 0, 0);
+    --primbgcol:rgb(255, 235, 209);
+    --secbgcol:rgb(255, 240, 193);
+    --primelemcol:#521f00;
+    --tablecol:#521f00;
 }
 
 body{
     background-color: var(--primbgcol);
     margin: 0%;
     height: 100vh;
-    font-family: 'Courier New', Courier, monospace; /*change*/
+    font-family: 'Lora';
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('@fonts/Lora-VariableFont_wght.ttf');
 }
 
 /*Augšas attēli un logo*/
@@ -21,7 +26,7 @@ body{
 
 #bannerdiv{
     width: 100vw;
-    height: 20vh;
+    height: 35vh;
     background-image: url('@img/banner.webp');
     display: flex;
     background-position: center;
@@ -31,8 +36,8 @@ body{
 }
 
 #logo{  
-    height: 12vh;
-    margin-top: 1.8rem;
+    height: 21vh;
+    margin-top: 4vh;
 }
 
 /*Navigācija*/
@@ -43,7 +48,7 @@ body{
     border-top: 5px var(--tablecol) solid;
     border-bottom: 5px var(--tablecol) solid;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     width: 100vw;
     flex-wrap: wrap;
     background-color: var(--primbgcol);
@@ -52,7 +57,7 @@ body{
 #navigation a{
     text-decoration: none;
     color: var(--primelemcol);
-    padding: 2px 15px 2px 15px;
+    padding: 15px 15px 15px 15px;
 }
 
 #navigation a:hover{
@@ -70,22 +75,79 @@ body{
 }
 
 #topspacer{
-    height: calc(41px + 20vh); /*nav height + bannerdiv height*/
+    height: calc(5em + 35vh); /*nav height + bannerdiv height*/
     width: 100%;
     display: block;
 }
 
 /*Pirmā lapa*/
 
-.welcome-container{
+#welcome-container{
+    display: flex;
+    justify-content:center;
+    padding-top: 5vh;
+}
+
+h1 {
+    text-align: center;
+}
+
+.kartes{
+    color:black;
+    background-color:gray;
+    height:650px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    aspect-ratio:7/9;
+    margin:0 6rem;
+    background-position: center;
+    text-decoration: none;
+    color: var(--primbgcol);
+}
+
+@keyframes kartesZoom {
+    0% {background-size: 120%}
+    100% {background-size: 130%}
+}
+
+.kartes:hover{
+    animation-name: kartesZoom;
+    animation-duration: 1s;
+    background-size: 130%;
+    color: var(--secbgcol);
+    animation-fill-mode: forwards;
+}
+
+.karte-teksts{
+    padding: 0.5em;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 3rem;
+}
+
+#jumts-karte{
+    background-image: url('@img/jumts.webp');
+}
+
+#skaidas-karte{
+    background-image: url('@img/skaidas.webp');
+}
+
+#eu-karte{
+    background-image: url('@img/eu.webp');
+}
+
+
+/*.welcome-container{
     display:grid;
     grid-template-columns: auto 844.8px;;
-    padding-top: 2rem;
     column-gap: 2vw;
     grid-template-rows: 3fr 2fr;
     padding: 2rem 5vw 0 5vw;
 }
-
+*/
+/*pārvietots .blog-article un .article-body un .article-footer*/
+/*
 .carousel{
     width: 844.8px;
     height: 475.2px;
@@ -96,34 +158,12 @@ body{
     align-items: center;
 }
 
-.blog-article{
-    max-height: 475.2px;
-    width: 100%;
-    flex-grow: 1;
-    margin-bottom: 1rem;
-    font-size: large;
-    line-height: 1.2;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.article-body{
-    height: 445.2px;
-}
-
-.article-footer{
-    color: var(--primelemcol);
-    padding: 0.5vh;
-    background-color: var(--secbgcol);
-}
 
 .welcome-blog-container{
     grid-column: 1;
     grid-row: 1;
     display: flex;
     flex-direction: column;
-    font-family: "Times New Roman", Times, serif; /*change*/
 }
 
 .wide-welcome-blog-container{
@@ -131,27 +171,28 @@ body{
     display: flex;
     flex-direction: column;
 }
-
 .picture-container{
     grid-column: 2;
     grid-row: 1;
     display: flex;
     flex-direction: column;
 }
+*/
 
 /*.welcome-blog-container>:nth-child(n+3){
     grid-column: 1 / 2;
 }*/
 
-/*middle.blade pogas*/
+/*middle.blade pogas
 
 .topmidbuttons{
     width: 100%;
     font-size: 1.7em;  
     display: flex;
     justify-content: center;
-    /*position: fixed; //noņemt komentāru, kad ir content*/
+    /*position: fixed; //noņemt komentāru, kad ir content
 }
+
 
 .topmidbuttons a{
     background-color: var(--primbgcol);
@@ -167,6 +208,8 @@ body{
     background-color: var(--primelemcol);
     color: var(--primbgcol);
 }
+*/
+
 
 /*Blogs*/
 
@@ -201,12 +244,79 @@ body{
     margin-top: 2vh;
 }
 
+.blog-article{
+    max-height: 475.2px;
+    width: 100%;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    font-size: large;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.article-body{
+    height: 445.2px;
+}
+
+.article-footer{
+    color: var(--primelemcol);
+    padding: 0.5vh;
+    background-color: var(--secbgcol);
+}
 /*.full-width{
     width: 100%;
 }*/
+
 /* Objekti */
 
-.objects-container{
+#objects-container{
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    padding: 0 5vw 0 5vw;
+    justify-content: end;
+}
+
+
+#map{
+    align-self: right;
+    padding-left: 5vw;
+}
+
+#objects-list{
+    flex-grow: 1;
+}
+
+#objects-list table{
+    border: 5px var(--tablecol) solid;
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#objects-list tr{
+    border-bottom: 3px var(--tablecol) solid;
+}
+
+#objects-list th{
+    font-size: large;
+}
+
+/*Piedāvājumi*/
+
+#shop-container{
+    padding: 1vh 5vw 0 5vw;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - (5em + 36vh));
+}
+
+.shop{
+    flex-grow: 1;
+}
+
+.shop h2{
+    text-align: center;
 }

@@ -1,8 +1,5 @@
 <x-base>
-    <div class="topmidbuttons">
-        <a href={{route("blog.index")}} class="patreizejs">Raksti</a>
-        <a href={{ route("history") }}>Vēsture</a>
-    </div>
+    <div>{{session()->get('message')}}</div>
     <div>
         <div class="page-head">
             <h1>

@@ -1,4 +1,4 @@
-<x-blog.middle>
+<x-base>
     <div class="page-head">
         <h1>Jauns raksts</h1>
     </div>
@@ -24,4 +24,4 @@
         <input type="file" name="pictures" id="raksta-bildes" accept=".jpg, .png, .jpeg, .tiff" multiple value="{{old('pictures')}}">
         <button type="submit">Saglabāt</button>
     </form>
-</x-blog.middle>
+</x-base>

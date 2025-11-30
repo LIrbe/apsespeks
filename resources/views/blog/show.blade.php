@@ -7,5 +7,6 @@
         </p>
         <div>Publicēšanas datums: {{ $raksts->date }}</div>
         </div>
+        <a href={{route('blog.edit', $raksts->id)}} class="createbutton">Rediģēt</a>
     </div>
 </x-base>
