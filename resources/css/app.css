@@ -93,9 +93,8 @@ h1 {
 }
 
 .kartes{
-    color:black;
     background-color:gray;
-    height:650px;
+    height:45vh;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -104,6 +103,7 @@ h1 {
     background-position: center;
     text-decoration: none;
     color: var(--primbgcol);
+    background-size: 120%;
 }
 
 @keyframes kartesZoom {
@@ -112,17 +112,17 @@ h1 {
 }
 
 .kartes:hover{
-    animation-name: kartesZoom;
-    animation-duration: 1s;
-    background-size: 130%;
+    -moz-animation: kartesZoom 1s linear forwards;
+    -webkit-animation:kartesZoom 1s linear forwards;
+    -o-animation:kartesZoom 1s linear forwards;
+    animation:kartesZoom 1s linear forwards;
     color: var(--secbgcol);
-    animation-fill-mode: forwards;
 }
 
 .karte-teksts{
-    padding: 0.5em;
+    padding: 2vh;
     background-color: rgba(0,0,0,0.5);
-    font-size: 3rem;
+    font-size: 4vh;
 }
 
 #jumts-karte{

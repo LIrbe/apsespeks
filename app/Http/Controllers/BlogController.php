@@ -8,6 +8,8 @@ use App\Models\Raksts;
 #use function PHPUnit\Framework\returnArgument;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Compilers\Concerns\CompilesClasses;
+use App\Http\Controllers\ImageController;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -34,6 +36,18 @@ class BlogController extends Controller
     public function store(StorePostRequest $request)
     {
         $raksts = Raksts::create($request->validated());
+        //$cont =  new ImageController();
+        $pictures = [];
+        $i = 0;
+        foreach ($request->pictures as $picture) {
+            //array_push($pictures, $picture);
+            $path = Storage::disk("public")->putFileAs($request->id, $picture,$i);
+            $pictures[] = $path;
+            $i++;
+        }
+        //$files = $cont->store($pictures);
+        $raksts->pictures = $pictures;
+        $raksts->save();
         return redirect()->route("blog.show", compact("raksts"))->with("success","Jauns raksts izveidots!");
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\StoreImageRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -14,8 +15,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::all();
-        return view("gallery.index", compact("images"));
+        $urls = Storage::allFiles(storage_path("uploads"));
+
+        return view("gallery.index", compact("urls"));
     }
 
     /**
@@ -29,9 +31,14 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(array $uploads)
     {
-        //
+        $filePaths = [];
+        foreach ($uploads as $file) {
+            $path = $file->store("uploads", 'public');
+            $filePaths[] = $path;
+        }
+        return $filePaths;
     }
 
     /**
@@ -39,7 +46,9 @@ class ImageController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $url = Storage::url("uploads/{$id}");
+
+        return view('gallery.show', compact('url'));
     }
 
     /**

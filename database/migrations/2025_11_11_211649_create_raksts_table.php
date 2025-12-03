@@ -18,7 +18,7 @@ return new class extends Migration
             $table->mediumText('content');
             $table->date('date');
             $table->boolean('pin')->default(false);
-            $table->text('files')->nullable();
+            $table->text('pictures')->nullable();
         });
     }
 

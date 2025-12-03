@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gallery', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->text('path');
+            $table->text('assoc_raksts')->nullable();
+            $table->text('assoc_obj')->nullable();
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gallery');
+        Schema::dropIfExists('images');
     }
 };

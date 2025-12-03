@@ -28,16 +28,14 @@ class StorePostRequest extends FormRequest
             'date' => ['required', 'date', 'after:' . now()],
             'pictures' => 'extensions:jpg,png,jpeg,tiff|mimes:jpg,png,jpeg,tiff|file|nullable',
         ];
-
-        /*foreach ($request->file('pictures') as $file) {
-        $file->store('uploads');
-    }*/
     }
 
     public function messages(): array
     {
         return [
             'title.required' => 'Vajag nosaukumu!',
+            'content.required'=> 'Vajag tekstu!',
+            'date.required'=> 'Vajag publicēšanas datumu',
         ];
     }
 }
