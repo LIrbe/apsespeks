@@ -26,7 +26,7 @@ class StorePostRequest extends FormRequest
             'title' => 'required|string',
             'content' => 'required|string',
             'date' => ['required', 'date', 'after:' . now()],
-            'pictures' => 'extensions:jpg,png,jpeg,tiff|mimes:jpg,png,jpeg,tiff|file|nullable',
+            'pictures' => 'extensions:jpg,png,jpeg,tiff|mimes:jpg,png,jpeg,tiff|file|nullable|max:10240',
         ];
     }
 

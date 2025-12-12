@@ -1,8 +1,8 @@
 <x-base>
     <!--<h1>Piedāvājumi</h1>-->
     <div id="welcome-container">
-            <a href={{route('shop')}} class="kartes" id="jumts-karte"><span class="karte-teksts">Jumti</span></a>
-            <a href={{route('shop')}} class="kartes" id="skaidas-karte"><span class="karte-teksts">Skaidas</span></a>
+            <a href={{route('shop.index')}} class="kartes" id="jumts-karte"><span class="karte-teksts">Jumti</span></a>
+            <a href={{route('shop.index')}} class="kartes" id="skaidas-karte"><span class="karte-teksts">Skaidas</span></a>
             <a href="/projekts" class="kartes" id="eu-karte"><span class="karte-teksts">Projekts</span></a>
     </div>
         <!--</div>

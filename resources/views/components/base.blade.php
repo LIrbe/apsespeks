@@ -4,16 +4,28 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <title>Apses Spēks</title>
+        <title>{{ config('app.name', 'Apses Spēks') }}</title>
         <link rel="icon" type="image/x-icon" href="{{asset('storage/images/favicon.ico')}}">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
-    <body class="antialiased">
+    <body>
+        @auth
+            <div id="auth-message">
+                Esi pieslēdzies {{ Auth::user()->email }} 
+                <a href="{{ route('auth.index') }}">Lietotāji</a>
+                <form action="{{ route('logout')}}" method="POST" class="nothing">
+                    @csrf
+                    <button>Atslēgties</button>
+                </form>
+            </div>
+        @endauth
         <div id="topsection">
             <div id="bannerdiv"><img src="{{asset('storage/images/logo.png')}}" alt="logo" id="logo"></div>
             <nav id="navigation">
                 <div id="navspacer"></div>
                 <a class="leftnav" href="/">Sākumlapa</a>
-                <a class="leftnav" href={{route('shop')}}>Darbības virzieni</a>
+                <a class="leftnav" href={{route('shop.index')}}>Darbības virzieni</a>
                 <a class="leftnav" href="{{route('gallery.index')}}">Galerija</a>
                 <a class="leftnav" href={{route('objekti.index')}}>Objekti</a>
                 <!--<a class="leftnav" href="#">Karte</a>-->

@@ -35,9 +35,28 @@ class BlogController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+        /*$imagePath=null;
+        if ($request->hasFile("image")) {
+            foreach($request->files('pictures') as $picture) {
+                $imagePath = $picture->store('photos', 'public');
+            }
+        }*/
+        
         $raksts = Raksts::create($request->validated());
+        $paths = [];
+        if($request->hasFile("pictures")){
+            foreach ($request->pictures as $picture) {
+                $file = $picture;
+                $file->move(public_path('uploads'));
+                $paths = "/uploads" . $file->getClientOriginalName();
+            }
+        }
+
+        $raksts->pictures = $paths;
+        $raksts->save();
+        //$raksts->pictures = $imagePath;
         //$cont =  new ImageController();
-        $pictures = [];
+        /*$pictures = [];
         $i = 0;
         foreach ($request->pictures as $picture) {
             //array_push($pictures, $picture);
@@ -47,7 +66,7 @@ class BlogController extends Controller
         }
         //$files = $cont->store($pictures);
         $raksts->pictures = $pictures;
-        $raksts->save();
+        $raksts->save();*/
         return redirect()->route("blog.show", compact("raksts"))->with("success","Jauns raksts izveidots!");
     }
 

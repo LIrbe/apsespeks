@@ -1,9 +1,9 @@
 :root{
-    /*change colors*/
     --primbgcol:rgb(255, 235, 209);
     --secbgcol:rgb(255, 240, 193);
     --primelemcol:#521f00;
     --tablecol:#521f00;
+    --submitcol:rgb(95, 214, 95);
 }
 
 body{
@@ -16,6 +16,10 @@ body{
 @font-face {
     font-family: 'Lora';
     src: url('@fonts/Lora-VariableFont_wght.ttf');
+}
+
+.nothing{
+    margin: 0;
 }
 
 /*Augšas attēli un logo*/
@@ -38,6 +42,54 @@ body{
 #logo{  
     height: 21vh;
     margin-top: 4vh;
+}
+
+/*Auth*/
+
+#auth-container{
+    display: flex;
+    justify-content: center;
+}
+
+#auth-form{
+    width: 20vw;
+}
+
+.form-elem{
+    display: flex;
+    padding: 0.25em;
+    justify-content: right;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.auth-input{
+    margin-left: 0.25vw;
+    width: 11vw;
+}
+
+#auth-container h2{
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#auth-message{
+    text-align: center;
+    background-color: var(--submitcol);
+    opacity: 0.5;
+    width: 100%;
+    display: fixed;
+}
+
+.error-list{
+    color: red;
+    background-color: rgba(0, 0, 0, 0.31);
+    padding: 1em 2em;
+    border-radius: 1em;
 }
 
 /*Navigācija*/
@@ -227,17 +279,20 @@ h1 {
     flex-direction: column;
 }
 
-.createbutton{
-    background-color: green;
-    padding: 5px;
-    border: 2px solid black;
+.submit-button{
+    background-color:var(--primbgcol);
+    border: 2px solid var(--tablecol);
     border-radius: 3px;
     text-decoration: none;
     color: var(--tablecol);
+    font-size: 1em;
+    font-weight: bold;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
-.createbutton:hover{
-    background-color: lightgreen;
+.submit-button:hover{
+    background-color: var(--submitcol);
 }
 
 .blog-content{
