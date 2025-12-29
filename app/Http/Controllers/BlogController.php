@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Raksts;
+#use function PHPUnit\Framework\returnArgument;
+use Illuminate\Support\Facades\Route;
+use Illuminate\View\Compilers\Concerns\CompilesClasses;
+use App\Http\Controllers\ImageController;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -40,7 +46,38 @@ class BlogController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+        /*$imagePath=null;
+        if ($request->hasFile("image")) {
+            foreach($request->files('pictures') as $picture) {
+                $imagePath = $picture->store('photos', 'public');
+            }
+        }*/
+        
         $raksts = Raksts::create($request->validated());
+        $paths = [];
+        if($request->hasFile("pictures")){
+            foreach ($request->pictures as $picture) {
+                $file = $picture;
+                $file->move(public_path('uploads'));
+                $paths = "/uploads" . $file->getClientOriginalName();
+            }
+        }
+
+        $raksts->pictures = $paths;
+        $raksts->save();
+        //$raksts->pictures = $imagePath;
+        //$cont =  new ImageController();
+        /*$pictures = [];
+        $i = 0;
+        foreach ($request->pictures as $picture) {
+            //array_push($pictures, $picture);
+            $path = Storage::disk("public")->putFileAs($request->id, $picture,$i);
+            $pictures[] = $path;
+            $i++;
+        }
+        //$files = $cont->store($pictures);
+        $raksts->pictures = $pictures;
+        $raksts->save();*/
         return redirect()->route("blog.show", compact("raksts"))->with("success","Jauns raksts izveidots!");
     }
 

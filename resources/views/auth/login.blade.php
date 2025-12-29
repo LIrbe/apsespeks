@@ -16,6 +16,13 @@
                         <button type="submit" class="submit-button">
                             {{ __('Login') }}
                         </button>
+
+                        @if (Route::has('password.request'))
+                            <a class="" href="{{ route('password.request') }}">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
+                        @endif
+                    
                 </div>
                 @if ($errors->any())
                     <ul class="error-list">
