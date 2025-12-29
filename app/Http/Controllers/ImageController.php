@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Image;
-use Illuminate\Support\Facades\Route;
-use App\Http\Requests\StoreImageRequest;
 use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
+    /*
+    |---------------------------------------------------------------
+    | Attēlu/Galerijas kontrolētājs
+    |---------------------------------------------------------------
+    |
+    | Šis kontrolētājs nodrošina galerijas sadaļas funkcionalitāti, 
+    | attēlu uzglabāšanu un lietotāja pārvirzīšanu uz galerijas 
+    | skatiem.
+    |
+    */
     /**
-     * Display a listing of the resource.
+     * Atgriež galerijas skatu ar attēliem.
      */
     public function index()
     {
@@ -21,15 +27,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Glabā datubāzē jaunu augšupielādētu attēlu.
      */
     public function store(array $uploads)
     {
@@ -42,7 +40,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Parāda izolētu izvēlēto attēlu.
      */
     public function show(string $id)
     {
@@ -52,23 +50,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
+     * Dzēš izvēlēto attēlu.
      */
     public function destroy(string $id)
     {

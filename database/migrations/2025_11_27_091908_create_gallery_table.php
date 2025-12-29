@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->text('path');
-            $table->text('assoc_raksts')->nullable();
-            $table->text('assoc_obj')->nullable();
+            $table->datetime('upload_time');
+            $table->text('upload_user');
         });
     }
 

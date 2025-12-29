@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('raksts', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->timestamps();
-            $table->text('title'); /* varbūt pārveidot uz tinytext */
+            $table->tinytext('title');
             $table->mediumText('content');
             $table->date('date');
-            $table->boolean('pin')->default(false);
             $table->text('pictures')->nullable();
+            $table->text('type');
         });
     }
 

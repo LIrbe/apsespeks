@@ -13,26 +13,26 @@ class RegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Register Controller
+    | Reģistrācijas kontrolētājs
     |--------------------------------------------------------------------------
     |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
+    | Šajā kontrolētājā notiek jaunu lietotāju reģistrācija, 
+    | šo lietotāju datu pārbaude un lietotāja novirzīšana uz 
+    | reģistrācijas skatu. 
     |
     */
 
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * Nosaka, kur novirzīt lietotājus pēc piekļūšanas.
      *
      * @var string
      */
     protected $redirectTo = '/';
 
     /**
-     * Create a new controller instance.
+     * Izveido jaunu kontrolētāja instanci.
      *
      * @return void
      */
@@ -42,7 +42,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Iegūst validētāju ienākošam reģistrācijas pieprasījumam.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -56,7 +56,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Izveido jaunu lietotāju pēc pareizas reģistrācijas.
      *
      * @param  array  $data
      * @return \App\Models\User
@@ -68,6 +68,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    
     public function registerPage(){
         return view("auth.register");
     }

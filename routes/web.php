@@ -33,6 +33,14 @@ Route::get('/home', function () {
 
 /* Auth */
 
+/*
+Route::controller(RegisterController::class)->group(function () {
+    Route::get('/register', 'registerPage')->name('register.page');
+
+    Route::post('/register', 'register')->name('register');
+});
+*/
+
 Route::middleware('auth')->controller(RegisterController::class)->group(function () {
     Route::get('/register', 'registerPage')->name('register.page');
 
@@ -133,7 +141,4 @@ Route::middleware('auth')->controller(ImageController::class)->group(function ()
 
 Route::get('/rezervacijas', function() {
     return view('bookings.main');
-});
-
-Route::middleware('auth')->controller(BookingController::class)->group(function () {
 });

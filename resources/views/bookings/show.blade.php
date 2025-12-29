@@ -1,3 +1,0 @@
-<x-base>
-    
-</x-base>

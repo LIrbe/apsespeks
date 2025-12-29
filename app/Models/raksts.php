@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class raksts extends Model
+class Raksts extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -13,5 +13,7 @@ class raksts extends Model
         "content",
         "date",
         "pictures",
+        "type",
+        "pin"
     ];
 }

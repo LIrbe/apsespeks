@@ -3,25 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreObjektsRequest;
-use Illuminate\Foundation\Console\StorageLinkCommand;
-use Illuminate\Http\Request;
 use App\Models\Objekts;
-use Illuminate\Support\Facades\Route;
 
 class ObjektuController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Objektu kontrolētājs
+    |--------------------------------------------------------------------------
+    |
+    | Šis kontrolētājs nodrošina Objektu sadaļas CRUD 
+    | funkcionalitāti un lietotāja pārvirzīšanu uz skatiem.
+    |
+    */
     /**
-     * Display a listing of the resource.
+     * Atgriež objektu skatu.
      */
     public function index()
     {
         $objekti = Objekts::all();
-        $objekts = NULL;
+        $objekts = NULL;            //skatā objekti.index šis mainīgais nodrošina objekta informācijas attēlojumu
         return view("objekti.index", ["objekti" => $objekti, "objekts" => $objekts]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Atgriež skatu ar jauna objekta izveides formu.
      */
     public function create()
     {
@@ -29,7 +35,7 @@ class ObjektuController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Glabā datubāzē jaunu objektu.
      */
     public function store(StoreObjektsRequest $request)
     {
@@ -38,7 +44,7 @@ class ObjektuController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Atgriež skatu ar konkrēto objektu.
      */
     public function show(string $id)
     {
@@ -47,7 +53,7 @@ class ObjektuController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Atgriež skatu ar formu konkrētā objekta modificēšanai ar objekta informāciju.
      */
     public function edit(string $id)
     {
@@ -56,7 +62,7 @@ class ObjektuController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Modificē objektu datubāzē.
      */
     public function update(StoreObjektsRequest $request, string $id)
     {
@@ -66,7 +72,7 @@ class ObjektuController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Dzēš specifisko objektu datubāzē.
      */
     public function destroy(string $id)
     {

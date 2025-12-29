@@ -12,26 +12,25 @@ class LoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Login Controller
+    | Pieteikšanās kontrolētājs
     |--------------------------------------------------------------------------
     |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
+    | Šis kontrolētājs autentificē lietotājus lapā un rāda 
+    | lietotājam pieteikšanās skatus.
     |
     */
 
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Nosaka, kur novirzīt lietotājus pēc piekļūšanas.
      *
      * @var string
      */
     protected $redirectTo = '/';
 
     /**
-     * Create a new controller instance.
+     * Izveido jaunu kontrolētāja instanci.
      *
      * @return void
      */
@@ -52,7 +51,7 @@ class LoginController extends Controller
         ]);
 
         if(Auth::attempt($validated)){
-            $request->session()->regenerate();
+            $request->session()->regenerate(); //izveido jaunu sesijas atslēgu, lai lietotājs paliek pilnvarots sesijā
 
             return back();
         }
