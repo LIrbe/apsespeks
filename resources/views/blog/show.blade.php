@@ -1,12 +1,30 @@
 <x-base>
     <div class="blog-article">
+        @if (Session::has('success'))
+            <div class="errors">
+                {{Session::get('success')}}
+            </div>
+        @endif 
         <div class="article-body">
         <h1>{{$raksts->title}}</h1>
         <p>
             {{$raksts->content}}
         </p>
-        <div>Publicēšanas datums: {{ $raksts->date }}</div>
+        <div>{{ucfirst(__('special.release'))}} {{ucfirst(__('validation.attributes.date'))}}: {{ $raksts->date }}</div>
         </div>
-        <a href={{route('blog.edit', $raksts->id)}} class="createbutton">Rediģēt</a>
+        @if ($raksts->image != NULL)
+            @foreach ($raksts->image as $picture)
+                <img src="{{ $picture }}">
+            @endforeach
+        @endif
+        @auth
+            Veidotājs: {{$raksts->user->email}}
+        @endauth
+        @if ($raksts->created_at > $raksts->updated_at)
+            Atjaunināts: {{$raksts->created_at}}
+        @else
+            Atjaunināts: {{$raksts->updated_at}}
+        @endif
+        <a href={{route('blog.edit', $raksts->id)}} class="createbutton">{{ucfirst(__('Edit'))}}</a>
     </div>
 </x-base>

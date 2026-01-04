@@ -274,4 +274,5 @@ return [
         'work'                     => 'work',
         'year'                     => 'gadā',
     ],
+    'main_admin'    => 'Nevar dzēst galveno administratoru!'
 ];

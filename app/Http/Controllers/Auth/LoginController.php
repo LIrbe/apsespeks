@@ -40,10 +40,12 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
+    //AMF01
     public function loginPage(){
         return view("auth.login");
     }
     
+    //AMF02
     public function login(Request $request){
         $validated = $request->validate([
             'email' => ['required', 'string', 'email'],
@@ -62,6 +64,7 @@ class LoginController extends Controller
         }
     }
 
+    //AMF03
     public function logout(Request $request){
         Auth::logout();
 

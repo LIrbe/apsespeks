@@ -1,15 +1,15 @@
 <x-base>
     <div class="page-head">
-        <h1>Objekti</h1>
+        <h1>{{ucfirst(trans_choice('special.object', 2))}}</h1>
     </div>
     <div>
         <div id="objects-container">
             <div id="objects-list">
                 <table>
                     <thead>
-                        <th>Nosaukums</th>
-                        <th>Laiks</th>
-                        <th>Atrašanās vieta</th>
+                        <th>{{ucfirst(__('validation.attributes.name'))}}</th>
+                        <th>{{ucfirst(__('validation.attributes.time'))}}</th>
+                        <th>{{ucfirst(__('Location'))}}</th>
                     </thead>
                     <tbody>
                         <tr>
@@ -37,7 +37,7 @@
             </div>
             <div id="map">
                 <!--<gmp-map></gmp-map>-->
-                <div style="color:black;background-color:gray;height:65vh;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1">karte</div>
+                <div style="color:black;background-color:gray;height:65vh;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1">{{ucfirst(__('special.map'))}}</div>
             </div>
         </div>
         @if ($objekts != NULL)
@@ -45,7 +45,7 @@
                 <h1>{{$objekts->title}}</h1>
                 <p>{{$objekts->description}}</p>
                 <p>{{$objekts->finish_date}}</p>
-                <a href={{route('objekti.show', $objekts->id)}}>Saite uz objektu</a>
+                <a href={{route('objekti.show', $objekts->id)}}>{{ucfirst(__('special.link'))}} {{__('special.to_the_object')}}</a>
             </div>
         @endif
     </div>

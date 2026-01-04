@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('raksts', function (Blueprint $table) {
-            $table->id()->autoIncrement();
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
-            $table->tinytext('title');
-            $table->text('content');
-            $table->date('date');
-            $table->tinytext('pin')->nullable();
-            $table->tinytext('type');
+            $table->text('path');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
         });
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('raksts');
+        Schema::dropIfExists('images');
     }
 };

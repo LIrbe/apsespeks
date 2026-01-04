@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Models\Raksts;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -21,15 +22,19 @@ class BlogController extends Controller
     /**
      *  Atgriež skatu ar visiem pieejamajiem rakstiem.
      */
+    
+    //BMF01
     public function index()
     {
-        $raksti = Raksts::all();
+        $raksti = Raksts::where('type', 'blog')->get();
         return view("blog.index", compact("raksti"));
     }
 
     /**
      * Atgriež skatu ar jauna raksta izveides formu.
      */
+    
+    //BMF02
     public function create()
     {
         return view("blog.create");
@@ -38,15 +43,19 @@ class BlogController extends Controller
     /**
      * Glabā datubāzē jaunu rakstu.
      */
+    //BMF03
     public function store(StorePostRequest $request)
     {
         $raksts = Raksts::create($request->validated());
+        $raksts->user_id = Auth::user()->id;
+        $raksts->save();
         return redirect()->route("blog.show", compact("raksts"))->with("success","Jauns raksts izveidots!");
     }
 
     /**
      * Atgriež skatu ar konkrēto rakstu.
      */
+    //BMF04
     public function show(string $id)
     {
         $raksts = Raksts::find($id);
@@ -56,15 +65,22 @@ class BlogController extends Controller
     /**
      * Atgriež skatu ar formu konkrētā raksta modificēšanai ar raksta informāciju.
      */
+    //BMF05
     public function edit(string $id)
     {
         $raksts = Raksts::find($id);
-        return view("blog.edit", compact("raksts"));
+        if(Auth::user()->id != $raksts->user_id){
+            return back()->with('error', 'Rakstu rediģēt var tikai raksta izveidotājs!');
+        }
+        else{
+            return view("blog.edit", compact("raksts"));
+        }
     }
 
     /**
      * Modificē rakstu datubāzē.
      */
+    //BMF06
     public function update(StorePostRequest $request)
     {
         $raksts = Raksts::find($request->id);
@@ -75,6 +91,7 @@ class BlogController extends Controller
     /**
      * Dzēš specifisko rakstu datubāzē.
      */
+    //BMF07
     public function destroy(string $id)
     {
         $raksts = Raksts::find($id);

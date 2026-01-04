@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Raksts extends Model
 {
@@ -12,8 +14,18 @@ class Raksts extends Model
         "title",
         "content",
         "date",
-        "pictures",
+        "pin",
         "type",
-        "pin"
+        "user_id",
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function image(): BelongsToMany
+    {
+        return $this->belongsToMany(Image::class);
+    }
 }

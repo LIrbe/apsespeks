@@ -3,12 +3,12 @@
     <div>
         <div class="page-head">
             <h1>
-                Jaunākie raksti
+                {{ucfirst(__('special.newest'))}} {{ucfirst(trans_choice('special.article', 2))}}
             </h1>
         </div>
         <div class="blog-container">
             <div class="full-width">
-                <a href={{route('blog.create')}} class="createbutton">Izveidot jaunu rakstu</a>
+                <a href={{route('blog.create')}} class="createbutton">{{ucfirst(__('Create'))}} {{ucfirst(__('special.ack_new'))}} {{ucfirst(__('special.ack_article'))}}</a>
             </div>
             <div class="blog-content">
                 @foreach ($raksti as $raksts)
@@ -20,7 +20,7 @@
                         </p>
                         </div>
                     <div class="article-footer">
-                        <a href ={{ route('blog.show', $raksts->id) }} class="overflow-sec">Redzēt Pilno Rakstu</a>
+                        <a href ={{ route('blog.show', $raksts->id) }} class="overflow-sec">{{ucfirst(__('actions.view'))}} {{ucfirst(__('special.full'))}} {{ucfirst(__('special.ack_article'))}}</a>
                     </div>
                 </div>
                 @endforeach

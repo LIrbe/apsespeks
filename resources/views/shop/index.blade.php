@@ -2,7 +2,7 @@
     <div>{{session()->get('message')}}</div>
     @if (Auth::check())
         <div class="full-width">
-            <a href={{route('blog.create')}} class="createbutton">Izveidot jaunu rakstu</a>
+            <a href={{route('blog.create')}} class="createbutton">{{ucfirst(__('create'))}} {{ucfirst(__('special.ack_new'))}} {{ucfirst(__('special.ack_article'))}}</a>
         </div>
     @endif
     <div id="shop-container">
@@ -36,7 +36,7 @@
                     </p>
                     </div>
                 <div class="article-footer">
-                    <a href ={{ route('shop.show', $raksts->id) }} class="overflow-sec">Redzēt Pilno Rakstu</a>
+                    <a href ={{ route('shop.show', $raksts->id) }} class="overflow-sec">{{ucfirst(__('actions.view'))}} {{ucfirst(__('special.full'))}} {{ucfirst(__('special.ack_article'))}}</a>
                 </div>
             </div>
         @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Raksts;
 use App\Models\ShopArticle;
 
 class ShopController extends Controller
@@ -20,18 +21,11 @@ class ShopController extends Controller
     /**
      * Atgriež Darbības virzienu galveno skatu.
      */
+    
+    //BMF08
     public function index()
     {
-        $raksti = ShopArticle::all();
+        $raksti = Raksts::where('type', 'shop')->get();
         return view("shop.index", compact("raksti"));
-    }
-
-    /**
-     * Atgriež konkrētā raksta skatu veikala rakstam.
-     */
-    public function show(string $id)
-    {
-        $raksts = ShopArticle::find($id);
-        return view("shop.show", compact("raksts"));
     }
 }

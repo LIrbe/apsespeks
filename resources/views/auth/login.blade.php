@@ -1,7 +1,7 @@
 <x-base>
     <div id="auth-container">
         <div id="auth-form">
-            <h2>Pieslēgties</h2>
+            <h2>{{ucfirst(__('Log In'))}}</h2>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-elem">

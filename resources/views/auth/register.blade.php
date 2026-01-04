@@ -1,7 +1,7 @@
 <x-base>
     <div id="auth-container">
         <div id="auth-form">
-            <h2>Reģistrēt Jaunu Admin</h2>
+            <h2>{{ucfirst(__('special.to_register'))}} {{ucfirst(__('special.ack_new'))}} {{ucfirst(__('special.ack_admin'))}}</h2>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="form-elem">

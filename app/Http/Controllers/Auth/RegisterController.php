@@ -38,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -47,6 +47,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    //AMF04
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -61,6 +62,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+    //AMF05
     protected function create(array $data)
     {
         return User::create([
@@ -68,18 +70,20 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-    
+
+    //AMF06
     public function registerPage(){
         return view("auth.register");
     }
-    
+
+    //AMF07
     public function register(Request $request){
         $validated = $request->validate([
             'email' => ['required', 'string', 'email', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        User::create($validated);
+        RegisterController::create($validated);
 
         return redirect()->route('auth.index')->with('success','Jauns lietotājs pievienots');
     }

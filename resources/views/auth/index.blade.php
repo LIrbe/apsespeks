@@ -2,16 +2,16 @@
     <div>
         <table>
             <thead>
-                <th>Lietotāji</th>
+                <th>{{ucfirst(trans_choice('User', 2))}}</th>
             </thead>
             <tbody>
                 @foreach ($users as $user)
                 <tr>
-                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->email }}</td><td><a href="{{route('auth.destroy', $user->id)}}">Dzēst</a></td>
                 </tr>
                 @endforeach
-<!--Jāpievieno kā dzēst lietotājus, nodrošināt, ka galvenais admin konts nav dzēšams-->
             </tbody>
+            <a href="{{route('register.page')}}">{{ucwords(__('special.register_new_admin'))}}</a>
         </table>
     </div>
 </x-base>

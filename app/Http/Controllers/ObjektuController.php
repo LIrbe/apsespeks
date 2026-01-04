@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreObjektsRequest;
 use App\Models\Objekts;
+use Illuminate\Support\Facades\Auth;
 
 class ObjektuController extends Controller
 {
@@ -19,6 +20,7 @@ class ObjektuController extends Controller
     /**
      * Atgriež objektu skatu.
      */
+    //OMF01
     public function index()
     {
         $objekti = Objekts::all();
@@ -29,6 +31,7 @@ class ObjektuController extends Controller
     /**
      * Atgriež skatu ar jauna objekta izveides formu.
      */
+    //OMF02
     public function create()
     {
         return view("objekti.create");
@@ -37,15 +40,19 @@ class ObjektuController extends Controller
     /**
      * Glabā datubāzē jaunu objektu.
      */
+    //OMF03
     public function store(StoreObjektsRequest $request)
     {
-        Objekts::create($request->validated());
+        $objekts = Objekts::create($request->validated());
+        $objekts->user_id = Auth::user()->id;
+        $objekts->save();
         return redirect()->route("objekti.show", $request->id)->with("success","Jauns objekts pievienots!");
     }
 
     /**
      * Atgriež skatu ar konkrēto objektu.
      */
+    //OMF04
     public function show(string $id)
     {
         $objekts = Objekts::find($id);
@@ -55,15 +62,22 @@ class ObjektuController extends Controller
     /**
      * Atgriež skatu ar formu konkrētā objekta modificēšanai ar objekta informāciju.
      */
+    //OMF05
     public function edit(string $id)
     {
         $objekts = Objekts::find($id);
-        return redirect()->route("objekti.edit", $objekts->id);
+        if(Auth::user()->id != $objekts->user_id){
+            return back()->with('error', 'Objektu rediģēt var tikai objekta izveidotājs!');
+        }
+        else{
+            return view("blog.edit", compact("objekts"));
+        }
     }
 
     /**
      * Modificē objektu datubāzē.
      */
+    //OMF06
     public function update(StoreObjektsRequest $request, string $id)
     {
         $objekts = Objekts::find($id);
@@ -74,6 +88,7 @@ class ObjektuController extends Controller
     /**
      * Dzēš specifisko objektu datubāzē.
      */
+    //OMF07
     public function destroy(string $id)
     {
         $objekts = Objekts::find($id);

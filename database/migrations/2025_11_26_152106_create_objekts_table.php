@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('objekts', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->timestamps();
-            $table->text('title');
+            $table->tinytext('title');
             $table->mediumText('description');
             $table->date('finish_date');
             $table->tinyText('coordinates');
-            $table->text('files')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -12,26 +12,31 @@
     <body>
         @auth
             <div id="auth-message">
-                Esi pieslēdzies {{ Auth::user()->email }} 
-                <a href="{{ route('auth.index') }}">Lietotāji</a>
+                {{ucfirst(__('special.auth_message'))}} {{ Auth::user()->email }} 
+                <a href="{{ route('auth.index') }}">{{ucfirst(trans_choice('User', 2))}}</a>
                 <form action="{{ route('logout')}}" method="POST" class="nothing">
                     @csrf
-                    <button>Atslēgties</button>
+                    <button>{{ucfirst(__('Logout'))}}</button>
                 </form>
             </div>
         @endauth
         <div id="topsection">
+            <div>
+                <a href={{route('localization', 'lv')}}>LV</a>
+                <a href={{route('localization', 'et')}}>EST</a>
+                <a href={{route('localization', 'en')}}>EN</a>
+            </div>
             <div id="bannerdiv"><img src="{{asset('storage/images/logo.png')}}" alt="logo" id="logo"></div>
             <nav id="navigation">
                 <div id="navspacer"></div>
-                <a class="leftnav" href="/">Sākumlapa</a>
-                <a class="leftnav" href={{route('shop.index')}}>Darbības virzieni</a>
-                <a class="leftnav" href="{{route('gallery.index')}}">Galerija</a>
-                <a class="leftnav" href={{route('objekti.index')}}>Objekti</a>
+                <a class="leftnav" href="/">{{ucfirst(__('special.homepage'))}}</a>
+                <a class="leftnav" href={{route('shop.index')}}>{{ucfirst(__('special.shop'))}}</a>
+                <a class="leftnav" href="{{route('gallery.index')}}">{{ucfirst(__('special.gallery'))}}</a>
+                <a class="leftnav" href={{route('objekti.index')}}>{{ucfirst(trans_choice('special.object', 2))}}</a>
                 <!--<a class="leftnav" href="#">Karte</a>-->
-                <a class="leftnav" href={{route('blog.index')}}>Blogs</a>
+                <a class="leftnav" href={{route('blog.index')}}>{{ucfirst(__('special.blog'))}}</a>
                 <!--<a class="leftnav" href="/rezervacijas">Rezervācijas</a>-->
-                <a href="/kontakti">Kontakti</a>
+                <a href="/kontakti">{{ucfirst(__('special.contacts'))}}</a>
             </nav>
         </div>
         <div id="topspacer"></div>
