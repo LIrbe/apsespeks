@@ -33,5 +33,8 @@ return [
     'map'               => 'karte',
     'link'              => 'saite',
     'to_the_object'     => 'uz objektu',
+    'ack_object'        => 'objektu',
+    'ack_finish'        => 'pabeigšanas',
+    'coords'            => 'koordinātas',
 ];
 ?>

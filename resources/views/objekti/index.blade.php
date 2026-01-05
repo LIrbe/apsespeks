@@ -2,6 +2,11 @@
     <div class="page-head">
         <h1>{{ucfirst(trans_choice('special.object', 2))}}</h1>
     </div>
+    @auth
+        <div class="full-width new button">
+            <a href={{route('objekti.create')}} class="createbutton">{{ucfirst(__('Create'))}} {{ucfirst(__('special.ack_new'))}} {{ucfirst(__('special.ack_object'))}}</a>
+        </div>
+    @endauth
     <div>
         <div id="objects-container">
             <div id="objects-list">
@@ -10,28 +15,17 @@
                         <th>{{ucfirst(__('validation.attributes.name'))}}</th>
                         <th>{{ucfirst(__('validation.attributes.time'))}}</th>
                         <th>{{ucfirst(__('Location'))}}</th>
+                        <th>{{ucfirst(__('information'))}}</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>$objekts->nosaukums</td>
-                            <td>$objekts->finish_date</td>
-                            <td><a href="#">Vieta</a></td>
-                        </tr>
-                        <tr>
-                            <td>$objekts2->nosaukums</td>
-                            <td>$objekts2->finish_date</td>
-                            <td><a href="#">Vieta2</a></td>
-                        </tr>
-                        <tr>
-                            <td>$objekts3->nosaukums</td>
-                            <td>$objekts3->finish_date</td>
-                            <td><a href="#">Vieta3</a></td>
-                        </tr>
-                        <tr>
-                            <td>$objekts4->nosaukums</td>
-                            <td>$objekts4->finish_date</td>
-                            <td><a href="#">Vieta4</a></td>
-                        </tr>
+                        @foreach ($objekti as $objekts)
+                            <tr>
+                                <td>{{$objekts->title}}</td>
+                                <td>{{$objekts->finish_date}}</td>
+                                <td><a href="#">Vieta</a></td>
+                                <td><a href="{{route('objekti.show', $objekts->id)}}">Informācija</a></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -40,13 +34,12 @@
                 <div style="color:black;background-color:gray;height:65vh;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1">{{ucfirst(__('special.map'))}}</div>
             </div>
         </div>
-        @if ($objekts != NULL)
+        @if ($act_objekts != NULL)
             <div>
-                <h1>{{$objekts->title}}</h1>
-                <p>{{$objekts->description}}</p>
-                <p>{{$objekts->finish_date}}</p>
-                <a href={{route('objekti.show', $objekts->id)}}>{{ucfirst(__('special.link'))}} {{__('special.to_the_object')}}</a>
+                <h1>{{$act_objekts->title}}</h1>
+                <p>{{$act_objekts->description}}</p>
+                <p>{{$act_objekts->finish_date}}</p>
+                <a href={{route('objekti.show', $act_objekts->id)}}>{{ucfirst(__('special.link'))}} {{__('special.to_the_object')}}</a>
             </div>
         @endif
-    </div>
 </x-base>

@@ -20,11 +20,14 @@
         @auth
             Veidotājs: {{$raksts->user->email}}
         @endauth
+        <br>
         @if ($raksts->created_at > $raksts->updated_at)
             Atjaunināts: {{$raksts->created_at}}
         @else
             Atjaunināts: {{$raksts->updated_at}}
         @endif
-        <a href={{route('blog.edit', $raksts->id)}} class="createbutton">{{ucfirst(__('Edit'))}}</a>
+        <div class="new button">
+            <a href={{route('blog.edit', $raksts->id)}}>{{ucfirst(__('Edit'))}}</a>
+        </div>
     </div>
 </x-base>

@@ -98,6 +98,11 @@ Route::middleware(Language::class)->group(function () {
     /* Objekti */
 
 
+
+    Route::get('/objekti', [ObjektuController::class,'index'])->name('objekti.index');
+
+    Route::get('/objekts/{objekts}', [ObjektuController::class,'show'])->name('objekti.show');
+
     Route::middleware('auth')->controller(ObjektuController::class)->group(function () {
         Route::get('/objekti/jauns', 'create')->name('objekti.create');
 
@@ -110,10 +115,6 @@ Route::middleware(Language::class)->group(function () {
         Route::delete('/objekti/{objekts}', 'delete')->name('objekti.delete');
 
     });
-
-    Route::get('/objekti', [ObjektuController::class,'index'])->name('objekti.index');
-
-    Route::get('/objekti/{objekts}', [ObjektuController::class,'show'])->name('objekti.show');
 
     /* Galerija */
 

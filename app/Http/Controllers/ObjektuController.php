@@ -24,8 +24,8 @@ class ObjektuController extends Controller
     public function index()
     {
         $objekti = Objekts::all();
-        $objekts = NULL;            //skatā objekti.index šis mainīgais nodrošina objekta informācijas attēlojumu
-        return view("objekti.index", ["objekti" => $objekti, "objekts" => $objekts]);
+        $act_objekts = NULL;            //skatā objekti.index šis mainīgais nodrošina izvēlētā objekta informācijas attēlojumu
+        return view("objekti.index", ["objekti" => $objekti, "act_objekts" => $act_objekts]);
     }
 
     /**
@@ -46,7 +46,7 @@ class ObjektuController extends Controller
         $objekts = Objekts::create($request->validated());
         $objekts->user_id = Auth::user()->id;
         $objekts->save();
-        return redirect()->route("objekti.show", $request->id)->with("success","Jauns objekts pievienots!");
+        return redirect()->route("objekti.show", compact("objekts"))->with("success","Jauns objekts pievienots!");
     }
 
     /**
@@ -70,7 +70,7 @@ class ObjektuController extends Controller
             return back()->with('error', 'Objektu rediģēt var tikai objekta izveidotājs!');
         }
         else{
-            return view("blog.edit", compact("objekts"));
+            return view("objekti.edit", compact("objekts"));
         }
     }
 

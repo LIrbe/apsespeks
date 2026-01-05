@@ -33,5 +33,8 @@ return [
     'map'               => 'kaart',
     'link'              => 'link',
     'to_the_object'     => 'objektile',
+    'ack_object'        => 'objekt',
+    'ack_finish'        => 'lõpetamine',
+    'coords'            => 'koordinaadid',
 ];
 ?>

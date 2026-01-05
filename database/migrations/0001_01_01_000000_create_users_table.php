@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Http\Controllers\Auth\RegisterController;
 
 return new class extends Migration
 {
@@ -18,7 +19,9 @@ return new class extends Migration
             $table->boolean('main')->unique()->nullable();
             $table->timestamps();
         });
+        RegisterController::class->register(['email' => 'admin@admin.lv', 'password' => 'Admin1234']);
     }
+
 
     /**
      * Reverse the migrations.

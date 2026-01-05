@@ -5,11 +5,11 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-elem">
-                    <label for="email" class="">{{ __('Email Address:') }}</label>
+                    <label for="email" class="">{{ ucfirst(__('validation.attributes.email')) }}:</label>
                     <input id="email" type="email" class="auth-input" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 </div>
                 <div class="form-elem">
-                    <label for="password" class="">{{ __('Password:') }}</label>
+                    <label for="password" class="">{{ ucfirst(__('validation.attributes.password')) }}</label>
                         <input id="password" type="password" class="auth-input" name="password" required autocomplete="current-password">
                 </div>
                 <div class="buttons">

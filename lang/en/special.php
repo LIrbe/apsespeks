@@ -33,5 +33,8 @@ return [
     'map'               => 'map',
     'link'              => 'link',
     'to_the_object'     => 'to object',
+    'ack_object'        => 'object',
+    'ack_finish'        => 'finish',
+    'coords'            => 'coordinates',
 ];
 ?>
