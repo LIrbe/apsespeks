@@ -1,15 +1,17 @@
 <x-base>
-    <div>{{session()->get('message')}}</div>
     <div>
         <div class="page-head">
+            {{Session::get('test')}}
             <h1>
                 {{ucfirst(__('special.newest'))}} {{ucfirst(trans_choice('special.article', 2))}}
             </h1>
         </div>
         <div class="blog-container">
-            <div class="full-width">
-                <a href={{route('blog.create')}} class="createbutton">{{ucfirst(__('Create'))}} {{ucfirst(__('special.ack_new'))}} {{ucfirst(__('special.ack_article'))}}</a>
-            </div>
+            @auth
+                <div class="full-width new button">
+                    <a href={{route('blog.create')}} class="createbutton">{{ucfirst(__('Create'))}} {{ucfirst(__('special.ack_new'))}} {{ucfirst(__('special.ack_article'))}}</a>
+                </div>
+            @endauth
             <div class="blog-content">
                 @foreach ($raksti as $raksts)
                 <div class="blog-article">

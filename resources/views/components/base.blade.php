@@ -10,23 +10,25 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
-        @auth
-            <div id="auth-message">
-                {{ucfirst(__('special.auth_message'))}} {{ Auth::user()->email }} 
-                <a href="{{ route('auth.index') }}">{{ucfirst(trans_choice('User', 2))}}</a>
-                <form action="{{ route('logout')}}" method="POST" class="nothing">
-                    @csrf
-                    <button>{{ucfirst(__('Logout'))}}</button>
-                </form>
-            </div>
-        @endauth
         <div id="topsection">
-            <div>
-                <a href={{route('localization', 'lv')}}>LV</a>
-                <a href={{route('localization', 'et')}}>EST</a>
-                <a href={{route('localization', 'en')}}>EN</a>
+            @auth
+                <div id="auth-message">
+                    {{ucfirst(__('special.auth_message'))}} {{ Auth::user()->email }} 
+                    <a href="{{ route('auth.index') }}">{{ucfirst(trans_choice('User', 2))}}</a>
+                    <form action="{{ route('logout')}}" method="POST" class="nothing">
+                        @csrf
+                        <button>{{ucfirst(__('Logout'))}}</button>
+                    </form>
+                </div>
+            @endauth
+            <div id="bannerdiv">
+                <div id="languages">
+                    <a href={{route('localization', 'lv')}}>LV</a>
+                    <a href={{route('localization', 'et')}}>EST</a>
+                    <a href={{route('localization', 'en')}}>EN</a>
+                </div>
+                <img src="{{asset('storage/images/logo.png')}}" alt="logo" id="logo">
             </div>
-            <div id="bannerdiv"><img src="{{asset('storage/images/logo.png')}}" alt="logo" id="logo"></div>
             <nav id="navigation">
                 <div id="navspacer"></div>
                 <a class="leftnav" href="/">{{ucfirst(__('special.homepage'))}}</a>
@@ -40,6 +42,9 @@
             </nav>
         </div>
         <div id="topspacer"></div>
+        @auth
+            <div id="authspacer"></div>
+        @endauth
         {{ $slot }}
     </body>
 </html>

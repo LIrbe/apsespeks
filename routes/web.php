@@ -119,8 +119,7 @@ Route::middleware(Language::class)->group(function () {
 
     Route::get('/galerija', [ImageController::class,'index'])->name('gallery.index');
 
-    Route::middleware('auth')->controller(ImageController::class)->group(function () {
-    });
+    Route::get('/galerija/{path}', [ImageController::class,'show'])->name('gallery.show');
 
     /* Rezervācijas */
 

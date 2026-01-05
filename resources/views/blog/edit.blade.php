@@ -11,18 +11,22 @@
             </ul>
         </div>
     @endif
-    <form method="PUT" action="{{ route('blog.update', $raksts->id) }}">
+    <form method="PUT" action="{{ route('blog.update', $raksts->id) }}" class="form">
         @csrf
         <label for="title">{{ucfirst(__('validation.attributes.name'))}}</label>
         <input type="text" id="raksta-nosaukums" name="title" value="{{$raksts->title}}">
         <textarea name="content" rows="10" cols="50" id="raksta-content">{{$raksts->content}}</textarea>
         <label for="date">{{ucfirst(__('special.release'))}} {{ucfirst(__('validation.attributes.date'))}}</label>
         <input type="datetime" id="raksta-datums" name="date" value="{{ $raksts->date}}">
-        <label for="pin">{{ucfirst(__('special.pin'))}}?</label>
-        <input type="checkbox" id="rakstu-piespraust" name="pin" value="{{ $raksts->pin }}">
+        <div class="pin">
+            <label for="pin">{{ucfirst(__('special.pin'))}}?</label>
+            <input type="checkbox" id="rakstu-piespraust" name="pin" value="{{ $raksts->pin }}">
+        </div>
         <label for="pictures">{{ucfirst(trans_choice('Image', 2))}}</label>
         <input type="file" name="pictures" id="raksta-bildes" accept=".jpg, .png, .jpeg, .tiff" multiple value="{{$raksts->pictures}}">
-        <button type="submit">{{ucfirst(__('Save'))}}</button>
+        <button type="submit" class="form-width">{{ucfirst(__('Save'))}}</button>
     </form>
-    <a href="{{ route("blog.delete", $raksts) }}" class="createbutton">{{ucfirst(__('Delete'))}}</a>
+    <div class="full-width delete button">
+        <a href="{{ route("blog.delete", $raksts) }}" class="createbutton">{{ucfirst(__('Delete'))}}</a>
+    </div>
 </x-base>

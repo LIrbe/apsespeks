@@ -4,6 +4,9 @@
     --primelemcol:#521f00;
     --tablecol:#521f00;
     --submitcol:rgb(95, 214, 95);
+    --submitcolhover:rgb(65, 184, 65);
+    --deletecol:rgb(214, 95, 95);
+    --deletecolhover:rgb(184, 65, 65);
 }
 
 body{
@@ -37,11 +40,12 @@ body{
     background-size: 100% 120%;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 #logo{  
     height: 21vh;
-    margin-top: 4vh;
+    /*margin-top: 4vh;*/
 }
 
 /*Auth*/
@@ -80,7 +84,6 @@ body{
 #auth-message{
     text-align: center;
     background-color: var(--submitcol);
-    opacity: 0.5;
     width: 100%;
     display: fixed;
 }
@@ -130,6 +133,31 @@ body{
     height: calc(5em + 35vh); /*nav height + bannerdiv height*/
     width: 100%;
     display: block;
+}
+
+#authspacer{
+    width: 100%;
+    display: block;
+    height: 2.7rem; /*auth height*/
+}
+
+#languages{
+    background-color: var(--primbgcol);
+    opacity: 0.5;
+    font-size: 1.5em;
+    align-self: first baseline;
+    margin-left: 1em;
+    padding: 0.3em;
+}
+
+#languages a{
+    text-decoration: none;
+    color: var(--primelemcol);
+    padding: 0.3em;
+}
+
+#languages a:hover{
+    background-color: var(--primelemcol);
 }
 
 /*Pirmā lapa*/
@@ -235,32 +263,6 @@ h1 {
     grid-column: 1 / 2;
 }*/
 
-/*middle.blade pogas
-
-.topmidbuttons{
-    width: 100%;
-    font-size: 1.7em;  
-    display: flex;
-    justify-content: center;
-    /*position: fixed; //noņemt komentāru, kad ir content
-}
-
-
-.topmidbuttons a{
-    background-color: var(--primbgcol);
-    color: var(--primelemcol);  text-decoration: none;
-    padding: 0.05em 0.5em 0.05em 0.5em;
-    border: 4px black solid;
-    margin: 0.5vh -3px 0px -3px;
-    width: 6vw;
-    text-align: center;
-}
-
-.topmidbuttons a:hover{
-    background-color: var(--primelemcol);
-    color: var(--primbgcol);
-}
-*/
 
 
 /*Blogs*/
@@ -300,7 +302,7 @@ h1 {
 }
 
 .blog-article{
-    max-height: 475.2px;
+    min-height: 33vh;
     width: 100%;
     flex-grow: 1;
     margin-bottom: 1rem;
@@ -312,7 +314,10 @@ h1 {
 }
 
 .article-body{
-    height: 445.2px;
+    min-height: 30vh;
+    width: 90vw;
+    background-color: var(--secbgcol);
+    padding: 1em;
 }
 
 .article-footer{
@@ -320,9 +325,70 @@ h1 {
     padding: 0.5vh;
     background-color: var(--secbgcol);
 }
-/*.full-width{
+.full-width{
     width: 100%;
-}*/
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    margin-top: 1vh;
+}
+
+.new a{
+    text-decoration: none;
+    color: var(--primelemcol);
+    border: var(--tablecol) solid 3px;
+    padding: 0.3em;
+}   
+
+.new a:hover{
+    color: var(--primbgcol);
+    background-color: var(--submitcolhover);
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 70vw;
+    margin: 0px auto;
+}
+
+.form-width{
+    width: 5vw;
+}
+
+.pin{
+    display: flex;
+    padding-top: 1em;
+}
+
+.form > label{
+    padding-top: 1em;
+}
+
+.form button{
+    background-color: var(--submitcol);
+    align-self: center;
+    border-radius: 5px;
+}
+
+.form button:hover{
+    background-color: var(--submitcolhover);
+}
+
+.delete a{
+    text-decoration: none;
+    color: var(--deleteemcol);
+    border: var(--tablecol) solid 3px;
+    padding: 0.3em;
+}   
+
+.delete a:hover{
+    color: var(--primbgcol);
+    background-color: var(--deletecolhover);
+}
 
 /* Objekti */
 
@@ -374,4 +440,52 @@ h1 {
 
 .shop h2{
     text-align: center;
+}
+
+/*Galerija*/
+#gallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.gallery-cell{
+    display: flex;
+}
+
+.gallery-placeholder{
+    background-color: gray;
+    margin: 1em;
+    flex-grow: 1;
+}
+
+.gptype-1{
+    /*height: 1080px;
+    width: 1920px;*/
+    max-height: 468px;
+    max-width: 815px;
+    height: 468px;
+    width: 815px;
+}
+
+.gptype-2{
+    /*height: 1920px;
+    width: 1080px;*/
+    max-height: 468px;
+    max-width: 815px;
+    height: 815px;
+    width: 468px;
+}
+
+.gptype-3{
+    /*height:744px;
+    width: 526px;*/
+    max-height: 468px;
+    max-width: 815px;
+    height: 744px;
+    width: 526px;
+}
+
+.gallery-cell a:hover{
+    background-color: darkgray;
 }
